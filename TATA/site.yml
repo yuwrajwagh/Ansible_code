@@ -1,0 +1,5 @@
+- name: "Install and configure webserver"
+  hosts: "{{ HOSTS }}"
+  become: yes
+  roles:
+    - role: APACHE       

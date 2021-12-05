@@ -1,0 +1,4 @@
+[webserver]
+web-1 ansible_user=admin ansible_host=10.10.10.145
+web-2 ansible_user=admin ansible_host=10.10.10.159
+web-3 ansible_user=admin ansible_host=10.10.10.54

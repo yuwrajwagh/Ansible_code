@@ -1,0 +1,26 @@
+---
+# tasks file for APACHE
+- yum: 
+    name: httpd 
+    state: latest
+- copy: 
+    src: /etc/httpd/conf/httpd.conf 
+    dest: /etc/httpd/conf/httpd.conf.org
+    remote_src: yes
+- template: 
+    src: httpd.conf.j2 
+    dest: /etc/httpd/conf/httpd.conf
+  notify:
+    - "restart apache"      
+- file:
+    path: /opt/htdocs
+    state: directory
+    owner: root 
+    group: root
+    mode: 0755
+- template:
+    src: index.html.j2
+    dest: /opt/htdocs/index.html
+    mode: 0755
+  notify:   
+    - "restart apache"
